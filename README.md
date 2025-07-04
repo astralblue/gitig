@@ -5,6 +5,12 @@ A tool for composing and synchronizing .gitignore from GitHub's template collect
 ## Installation
 
 ```bash
+uv add gitig
+```
+
+Or with pip:
+
+```bash
 pip install gitig
 ```
 

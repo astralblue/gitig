@@ -22,7 +22,9 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dynamic = ["version"]
-dependencies = []
+dependencies = [
+    "black>=25.1.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -37,9 +39,16 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Eugene Kim/gitig"
-Repository = "https://github.com/Eugene Kim/gitig"
-Issues = "https://github.com/Eugene Kim/gitig/issues"
+Homepage = "https://github.com/astralblue/gitig"
+Repository = "https://github.com/astralblue/gitig"
+Issues = "https://github.com/astralblue/gitig/issues"
 
 [tool.isort]
 profile = "black"
+skip_gitignore = true
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+]
