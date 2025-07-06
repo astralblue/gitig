@@ -77,7 +77,7 @@ dev = [
 version_toml = ["pyproject.toml:project.version"]
 build_command = "python -m build"
 dist_path = "dist/"
-upload_to_pypi = true
+upload_to_pypi = false
 upload_to_release = true
 commit_message = "chore: release {version}"
 tag_format = "v{version}"
@@ -85,6 +85,7 @@ remote_name = "astralblue"
 remote_url = "https://github.com/astralblue/ign.git"
 major_on_zero = false
 allow_zero_version = true
+changelog_file = "CHANGELOG-auto.md"
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["feat", "fix", "docs", "style", "refactor", "test", "chore", "perf", "ci", "build", "revert"]
@@ -92,6 +93,6 @@ minor_tags = ["feat!"]
 patch_tags = ["feat", "fix", "perf", "refactor", "style", "test", "build", "ci", "chore", "docs"]
 
 [tool.semantic_release.changelog]
-default_templates.changelog_file = "CHANGELOG.md"
-exclude_commit_patterns = []
+template_dir = "templates"
+exclude_commit_patterns = ["^chore: release"]
 

@@ -22,20 +22,41 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Note**: Black has been removed as a dependency; Ruff handles all code quality tasks
 
 ### Release Management
-- **Automated releases**: `semantic-release version` (automatically determines and creates releases)
-- **Pre-1.0 versioning scheme**:
-  - `feat!:` or `BREAKING CHANGE:` → Minor bump (0.1.x → 0.2.0) 
-  - `feat:` → Patch bump (0.1.1 → 0.1.2)
-  - `fix:`, `perf:`, etc. → Patch bump (0.1.1 → 0.1.2)
-- **Manual changelog validation**: `kacl-cli verify` (validates Keep a Changelog format)
-- **Manual changelog entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
-- **Manual version creation**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
-- **Update documentation**: `python scripts/update-changelog.py` (converts CHANGELOG.md to docs/changelog.rst)
-- **Tools**: 
-  - `python-semantic-release` for automated version management and releases
-  - `python-kacl` for manual changelog management 
-  - `m2r2` for Markdown→reStructuredText conversion
-- **Automation**: GitHub Actions handle automated releases on push to main
+
+**Hybrid Approach**: Manual changelog + Automated versioning
+
+#### Automated Components
+- **Version bumping**: `semantic-release` reads commit messages and bumps version automatically
+- **GitHub releases**: Created automatically with auto-generated release notes from commits
+- **PyPI publishing**: Automatic when version changes
+- **Documentation**: `docs/changelog.rst` updated automatically from `CHANGELOG.md`
+
+#### Manual Components  
+- **CHANGELOG.md**: Manually maintained using `kacl-cli` for high-quality entries
+- **Release notes**: Manual changelog provides detailed, curated release information
+
+#### Versioning Scheme (Pre-1.0)
+- `feat!:` or `BREAKING CHANGE:` → Minor bump (0.1.x → 0.2.0) 
+- `feat:` → Patch bump (0.1.1 → 0.1.2)
+- `fix:`, `perf:`, etc. → Patch bump (0.1.1 → 0.1.2)
+
+#### Manual Changelog Commands
+- **Validate**: `kacl-cli verify` (validates Keep a Changelog format)
+- **Add entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
+- **Create release**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
+- **Update docs**: `python scripts/update-changelog.py` (converts CHANGELOG.md to docs/changelog.rst)
+
+#### Workflow
+1. Use `kacl-cli add` to manually curate important changes in CHANGELOG.md
+2. Commit with conventional commit messages for automatic versioning
+3. Push to main → GitHub Actions automatically releases based on commit messages
+4. Manual CHANGELOG.md provides detailed release notes, commit-based changelog provides GitHub release notes
+
+#### Tools
+- `python-semantic-release` for automated version management and GitHub releases
+- `python-kacl` for manual changelog curation
+- `m2r2` for Markdown→reStructuredText conversion
+- GitHub Actions for CI/CD automation
 
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)
