@@ -60,8 +60,7 @@ Code Style
 The project follows these style guidelines:
 
 - **Primary tool**: Ruff (handles formatting, linting, and import sorting)
-- **Legacy tool**: Black (still available but prefer Ruff)
-- **Line length**: 88 characters (Ruff default, compatible with Black)
+- **Line length**: 88 characters (Ruff default)
 
 Format and lint code before committing::
 

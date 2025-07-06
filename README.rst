@@ -229,9 +229,7 @@ Running tests::
 
 Code formatting::
 
-    black .
-    isort .
-    ruff check .
+    ruff check --fix && ruff format
 
 Building documentation::
 
