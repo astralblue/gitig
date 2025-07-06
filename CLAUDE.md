@@ -23,6 +23,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Release Management
 - **Automated releases**: `semantic-release version` (automatically determines and creates releases)
+- **Pre-1.0 versioning scheme**:
+  - `feat!:` or `BREAKING CHANGE:` → Minor bump (0.1.x → 0.2.0) 
+  - `feat:` → Patch bump (0.1.1 → 0.1.2)
+  - `fix:`, `perf:`, etc. → Patch bump (0.1.1 → 0.1.2)
 - **Manual changelog validation**: `kacl-cli verify` (validates Keep a Changelog format)
 - **Manual changelog entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
 - **Manual version creation**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
