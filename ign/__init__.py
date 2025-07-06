@@ -278,8 +278,11 @@ def _build_argparser():
     parser.add_argument(
         "--logging",
         type=LoggingType,
-        default=LoggingType.CONSOLE,
-        help=f"""Logging type, one of: {", ".join(e.value for e in LoggingType)}.""",
+        default=(
+            LoggingType.CONSOLE if os.isatty(sys.stderr.fileno()) else LoggingType.JSON
+        ),
+        help=f"""Logging type, one of: {", ".join(e.value for e in LoggingType)}
+                 (default: console if stderr is a TTY, otherwise JSON).""",
     )
     parser.add_argument(
         "--debug",
