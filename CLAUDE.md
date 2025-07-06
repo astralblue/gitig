@@ -18,8 +18,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Code Quality
 - **Format and lint code**: `ruff format . && ruff check --fix .` (handles formatting, linting, and import sorting)
-- **Legacy formatter**: `black .` (still available but prefer Ruff)
 - **Run all quality checks**: `ruff format . && ruff check --fix .`
+- **Note**: Black has been removed as a dependency; Ruff handles all code quality tasks
 
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)
@@ -96,6 +96,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Custom exceptions**: `NoCommitError` for missing template commits
 
 ## Release History
+
+### Post-v0.1.0 Improvements (2025-07-06)
+- **Logging enhancements**: Default to INFO level, improved CLI options (`-q`/`--quiet` added)
+- **Auto-detection**: JSON logging when stderr is not a TTY
+- **Performance**: Added LRU caching for template fetching with `async-lru`
+- **Bug fixes**: Fixed double logging when using `-v` and `-d` together
+- **Code quality**: Fully migrated to Ruff-only workflow (removed Black dependency)
+- **Dependencies**: Moved dev dependencies to PEP 735 dependency groups
+- **Documentation**: Updated with new CLI options and recent improvements
 
 ### v0.1.0 (2025-07-06)
 - **Initial release** published to PyPI
