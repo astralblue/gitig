@@ -4,6 +4,7 @@ from contextvars import ContextVar
 from typing import Sequence
 
 import httpx
+from async_lru import alru_cache
 from github import Github
 
 from ign import RAW_BASE_URL
@@ -81,7 +82,14 @@ async def get_template(
 ) -> tuple[Sequence[str], str]:
     path = f"{name}.gitignore"
     sha = await get_latest_sha(path, as_of)
+    lines = await _get_template_at_commit(path, sha)
+    return lines, sha.lower()
+
+
+@alru_cache
+async def _get_template_at_commit(path, sha):
     async with httpx_client() as client:
         resp = await client.get(f"{RAW_BASE_URL}/{sha}/{path}")
         resp.raise_for_status()
-        return resp.text.splitlines(keepends=True), sha.lower()
+        lines = resp.text.splitlines(keepends=True)
+    return lines
