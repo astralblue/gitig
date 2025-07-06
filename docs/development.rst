@@ -59,16 +59,18 @@ Code Style
 
 The project follows these style guidelines:
 
-- **Formatter**: Black with default settings
-- **Import sorting**: isort with Black profile
-- **Linting**: Ruff for additional checks
-- **Line length**: 88 characters (Black default)
+- **Primary tool**: Ruff (handles formatting, linting, and import sorting)
+- **Legacy tool**: Black (still available but prefer Ruff)
+- **Line length**: 88 characters (Ruff default, compatible with Black)
 
-Format code before committing::
+Format and lint code before committing::
+
+    ruff format .
+    ruff check --fix .
+
+Or use legacy tool if needed::
 
     black .
-    isort .
-    ruff check .
 
 Testing
 ~~~~~~~
@@ -274,9 +276,8 @@ Getting Started
 6. **Run the full test suite**::
 
        pytest
-       black .
-       isort .
-       ruff check .
+       ruff format .
+       ruff check --fix .
 
 7. **Commit your changes**::
 

@@ -1,6 +1,6 @@
 import logging
 from enum import Enum
-from typing import final, Any
+from typing import Any, final
 
 from pythonjsonlogger.core import RESERVED_ATTRS
 from pythonjsonlogger.json import JsonFormatter

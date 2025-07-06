@@ -14,10 +14,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Run the tool**: `python -m gitig` or `gitig` (when installed)
 
 ### Code Quality
-- **Format code**: `black .` (configured in pyproject.toml)
-- **Sort imports**: `isort .` (configured with black profile)
-- **Lint code**: `ruff check .` (configured in dependency-groups.dev)
-- **Run all formatters**: `black . && isort .`
+- **Format and lint code**: `ruff format . && ruff check --fix .` (handles formatting, linting, and import sorting)
+- **Legacy formatter**: `black .` (still available but prefer Ruff)
+- **Run all quality checks**: `ruff format . && ruff check --fix .`
 
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)

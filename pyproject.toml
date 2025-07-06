@@ -36,7 +36,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black>=25.1.0",
-    "isort[colors]>=6.0.1",
     "pytest",
     "pytest-cov",
     "ruff>=0.12.2",
@@ -54,7 +53,15 @@ Issues = "https://github.com/astralblue/gitig/issues"
 [project.scripts]
 gitig = "gitig:main"
 
-[tool.isort]
-profile = "black"
-skip_gitignore = true
+[tool.ruff]
+fix = true
+
+[tool.ruff.lint]
+select = ["I"]  # Enable import sorting
+
+[tool.ruff.lint.isort]
+# Black-compatible settings
+force-single-line = false
+combine-as-imports = true
+split-on-trailing-comma = true
 

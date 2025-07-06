@@ -4,54 +4,54 @@ import os
 import sys
 
 # Add the project root to the Python path
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath(".."))
 
 # Import the package to get version and other metadata
 import gitig
 
 # -- Project information -----------------------------------------------------
 
-project = 'gitig'
-copyright = '2024, Eugene Kim'
-author = 'Eugene Kim'
+project = "gitig"
+copyright = "2024, Eugene Kim"
+author = "Eugene Kim"
 version = gitig.__version__
 release = version
 
 # -- General configuration ---------------------------------------------------
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
 html_static_path = []
 
 # -- Options for autodoc ----------------------------------------------------
 
 autodoc_default_options = {
-    'members': True,
-    'undoc-members': True,
-    'show-inheritance': True,
+    "members": True,
+    "undoc-members": True,
+    "show-inheritance": True,
 }
 
-autodoc_member_order = 'bysource'
-autodoc_typehints = 'description'
+autodoc_member_order = "bysource"
+autodoc_typehints = "description"
 
 # -- Options for intersphinx extension ---------------------------------------
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3', None),
-    'github': ('https://pygithub.readthedocs.io/en/latest/', None),
+    "python": ("https://docs.python.org/3", None),
+    "github": ("https://pygithub.readthedocs.io/en/latest/", None),
 }
 
 # -- Options for todo extension ----------------------------------------------
