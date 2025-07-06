@@ -314,11 +314,12 @@ def main() -> int | None:
     args = parser.parse_args()
     _log.setLevel(args.log_level)
     handler = make_logging_handler(args.logging)
-    _log.addHandler(handler)
     if args.debug:
         root_logger = logging.getLogger()
         root_logger.addHandler(handler)
         root_logger.setLevel(logging.DEBUG)
+    else:
+        _log.addHandler(handler)
     try:
         return asyncio.run(async_main(args))
     except Exception as e:
