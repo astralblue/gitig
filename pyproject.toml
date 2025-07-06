@@ -35,10 +35,11 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black",
-    "isort[colors]",
+    "black>=25.1.0",
+    "isort[colors]>=6.0.1",
     "pytest",
     "pytest-cov",
+    "ruff>=0.12.2",
 ]
 docs = [
     "sphinx",
@@ -57,9 +58,3 @@ gitig = "gitig:main"
 profile = "black"
 skip_gitignore = true
 
-[dependency-groups]
-dev = [
-    "black>=25.1.0",
-    "isort>=6.0.1",
-    "ruff>=0.12.2",
-]
