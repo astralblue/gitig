@@ -1,7 +1,7 @@
-gitig
-=====
+ign
+===
 
 .. toctree::
    :maxdepth: 4
 
-   gitig
+   ign

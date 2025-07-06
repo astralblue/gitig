@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`gitig` is a Python CLI tool for composing and synchronizing .gitignore files from GitHub's template collection. It reads existing .gitignore files with specially formatted marker comments and can update/add template sections from github/gitignore repository.
+`ign` is a Python CLI tool for composing and synchronizing .gitignore files from GitHub's template collection. It reads existing .gitignore files with specially formatted marker comments and can update/add template sections from github/gitignore repository.
 
 ## Commands
 
 ### Development Environment
 - **Package manager**: `uv` (recommended) or `pip`
 - **Install dependencies**: `uv sync` or `pip install -e .[dev]`
-- **Run the tool**: `python -m gitig` or `gitig` (when installed)
+- **Run the tool**: `python -m ign` or `ign` (when installed)
 
 ### Code Quality
 - **Format and lint code**: `ruff format . && ruff check --fix .` (handles formatting, linting, and import sorting)
@@ -21,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)
 - **Run tests**: `pytest` 
-- **Run with coverage**: `pytest --cov=gitig`
+- **Run with coverage**: `pytest --cov=ign`
 
 ### Build and Distribution
 - **Build backend**: `flit_core` (configured in pyproject.toml)
@@ -32,7 +32,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Core Components
 
-#### Main Module (`gitig/__init__.py`)
+#### Main Module (`ign/__init__.py`)
 - **Entry point**: `main()` function handles CLI parsing and orchestration
 - **Core logic**: `async_main()` processes .gitignore files with template synchronization
 - **Template markers**: Uses regex pattern to identify BEGIN/END sections with format:
@@ -41,22 +41,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   # --- END https://raw.githubusercontent.com/github/gitignore/{SHA}/{TEMPLATE}.gitignore ---
   ```
 
-#### Network Module (`gitig/net.py`)
+#### Network Module (`ign/net.py`)
 - **Template fetching**: `get_template()` downloads templates from GitHub raw URLs
 - **SHA resolution**: `get_latest_sha()` finds latest commit affecting a template using GitHub API
 - **HTTP client**: Uses `httpx` with context variable for async client management
 - **GitHub API**: Uses `PyGithub` for repository operations
 
-#### Logging Module (`gitig/_logging.py`)
+#### Logging Module (`ign/_logging.py`)
 - **Structured logging**: `StructLogAdapter` provides structured logging with bound context
 - **Output formats**: Console (Rich) and JSON logging modes
 - **Extra fields**: Custom formatter for additional context fields
 
-#### Constants (`gitig/consts.py`)
+#### Constants (`ign/consts.py`)
 - **GitHub repository**: `github/gitignore`
 - **Raw URL base**: Template for fetching raw files
 
-#### Utilities (`gitig/utils.py`)
+#### Utilities (`ign/utils.py`)
 - **Final metaclass**: `FinalMeta` prevents class inheritance
 
 ### Key Algorithms

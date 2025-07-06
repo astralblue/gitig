@@ -3,7 +3,7 @@ requires = ["flit_core >=3.11,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "gitig"
+name = "ign"
 authors = [
     { name = "Eugene Kim", email = "ab@astral.blue" },
 ]
@@ -44,14 +44,17 @@ docs = [
     "sphinx",
     "sphinx-rtd-theme",
 ]
+build = [
+    "flit>=3.12.0",
+]
 
 [project.urls]
-Homepage = "https://github.com/astralblue/gitig"
-Repository = "https://github.com/astralblue/gitig"
-Issues = "https://github.com/astralblue/gitig/issues"
+Homepage = "https://github.com/astralblue/ign"
+Repository = "https://github.com/astralblue/ign"
+Issues = "https://github.com/astralblue/ign/issues"
 
 [project.scripts]
-gitig = "gitig:main"
+ign = "ign:main"
 
 [tool.ruff]
 fix = true

@@ -1,5 +1,5 @@
 ======
-gitig
+ign
 ======
 
 A tool for composing and synchronizing .gitignore from GitHub's template collection.
@@ -7,7 +7,7 @@ A tool for composing and synchronizing .gitignore from GitHub's template collect
 Description
 ===========
 
-``gitig`` automatically manages .gitignore files by synchronizing them with templates from GitHub's `gitignore repository`_. It intelligently merges your local modifications with upstream template changes, preserving your customizations while keeping templates up to date.
+``ign`` automatically manages .gitignore files by synchronizing them with templates from GitHub's `gitignore repository`_. It intelligently merges your local modifications with upstream template changes, preserving your customizations while keeping templates up to date.
 
 .. _gitignore repository: https://github.com/github/gitignore
 
@@ -27,11 +27,11 @@ Installation
 
 Using uv (recommended)::
 
-    uv add gitig
+    uv add ign
 
 Using pip::
 
-    pip install gitig
+    pip install ign
 
 Usage
 =====
@@ -41,22 +41,22 @@ Basic Usage
 
 Add templates to your .gitignore::
 
-    gitig Python Node
+    ign Python Node
 
 Update existing templates::
 
-    gitig
+    ign
 
 Sync specific templates with version pinning::
 
-    gitig Python@main Node@abc1234
+    ign Python@main Node@abc1234
 
 Command Line Options
 --------------------
 
 ::
 
-    gitig [OPTIONS] [TEMPLATE[@HASH]...]
+    ign [OPTIONS] [TEMPLATE[@HASH]...]
 
 **Options:**
 
@@ -79,27 +79,27 @@ Examples
 
 Add Python and Node.js templates::
 
-    gitig Python Node
+    ign Python Node
 
 Update all existing templates::
 
-    gitig
+    ign
 
 Preview changes without applying::
 
-    gitig --dry-run --diff
+    ign --dry-run --diff
 
 Use with custom file::
 
-    gitig --file my-project/.gitignore Java Maven
+    ign --file my-project/.gitignore Java Maven
 
 Read from stdin, write to stdout::
 
-    cat .gitignore | gitig -f- Python > new-gitignore
+    cat .gitignore | ign -f- Python > new-gitignore
 
 Pin template to specific version::
 
-    gitig Python@4f15b43 Node@latest
+    ign Python@4f15b43 Node@latest
 
 How It Works
 ============
@@ -107,13 +107,13 @@ How It Works
 Template Markers
 -----------------
 
-``gitig`` uses special marker comments to track template sections::
+``ign`` uses special marker comments to track template sections::
 
     # --- BEGIN https://raw.githubusercontent.com/github/gitignore/{SHA}/{TEMPLATE}.gitignore ---
     # Template content here
     # --- END https://raw.githubusercontent.com/github/gitignore/{SHA}/{TEMPLATE}.gitignore ---
 
-These markers allow ``gitig`` to:
+These markers allow ``ign`` to:
 
 - Identify which templates are already included
 - Track the version (SHA) of each template
@@ -122,7 +122,7 @@ These markers allow ``gitig`` to:
 Merge Strategy
 --------------
 
-When updating templates, ``gitig`` uses a sophisticated merge algorithm:
+When updating templates, ``ign`` uses a sophisticated merge algorithm:
 
 1. **Fetch versions**: Downloads both old (current) and new (latest) template versions
 2. **Apply strategies**: Tries two different merge approaches:
@@ -190,7 +190,7 @@ Common Issues
     available templates.
 
 **Merge conflicts**
-    If automatic merging fails, ``gitig`` will preserve your current content
+    If automatic merging fails, ``ign`` will preserve your current content
     and log the issue. You may need to manually resolve conflicts.
 
 **API rate limits**
@@ -205,7 +205,7 @@ Debug Mode
 
 Enable debug logging for detailed information::
 
-    gitig --debug --verbose Python
+    ign --debug --verbose Python
 
 This shows:
 
@@ -219,8 +219,8 @@ Development
 
 Setting up development environment::
 
-    git clone https://github.com/astralblue/gitig.git
-    cd gitig
+    git clone https://github.com/astralblue/ign.git
+    cd ign
     uv sync
 
 Running tests::
@@ -259,7 +259,7 @@ For bug reports and feature requests, please use the GitHub issue tracker.
 Links
 =====
 
-- **Repository**: https://github.com/astralblue/gitig
-- **Issues**: https://github.com/astralblue/gitig/issues
-- **PyPI**: https://pypi.org/project/gitig/
+- **Repository**: https://github.com/astralblue/ign
+- **Issues**: https://github.com/astralblue/ign/issues
+- **PyPI**: https://pypi.org/project/ign/
 - **GitHub Templates**: https://github.com/github/gitignore

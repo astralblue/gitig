@@ -1,7 +1,7 @@
-gitig package
+ign package
 =============
 
-.. automodule:: gitig
+.. automodule:: ign
    :members:
    :undoc-members:
    :show-inheritance:
@@ -9,34 +9,34 @@ gitig package
 Submodules
 ----------
 
-gitig.net module
+ign.net module
 ----------------
 
-.. automodule:: gitig.net
+.. automodule:: ign.net
    :members:
    :undoc-members:
    :show-inheritance:
 
-gitig._logging module
+ign._logging module
 ---------------------
 
-.. automodule:: gitig._logging
+.. automodule:: ign._logging
    :members:
    :undoc-members:
    :show-inheritance:
 
-gitig.consts module
+ign.consts module
 -------------------
 
-.. automodule:: gitig.consts
+.. automodule:: ign.consts
    :members:
    :undoc-members:
    :show-inheritance:
 
-gitig.utils module
+ign.utils module
 ------------------
 
-.. automodule:: gitig.utils
+.. automodule:: ign.utils
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-This document records all notable changes to the ``gitig`` project.
+This document records all notable changes to the ``ign`` project.
 
 The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
@@ -43,7 +43,7 @@ Security
 Added
 ~~~~~
 
-- Initial release of ``gitig``
+- Initial release of ``ign``
 - Core functionality for .gitignore template management
 - Template synchronization from GitHub's gitignore repository
 - Support for local modifications preservation

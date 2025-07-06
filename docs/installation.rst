@@ -13,25 +13,25 @@ Package Installation
 Using uv (recommended)
 ~~~~~~~~~~~~~~~~~~~~~~
 
-``uv`` is the modern Python package manager and is the recommended way to install ``gitig``::
+``uv`` is the modern Python package manager and is the recommended way to install ``ign``::
 
-    uv add gitig
+    uv add ign
 
 For development work::
 
-    uv add --dev gitig
+    uv add --dev ign
 
 Using pip
 ~~~~~~~~~
 
 Install from PyPI::
 
-    pip install gitig
+    pip install ign
 
 Install from source::
 
-    git clone https://github.com/astralblue/gitig.git
-    cd gitig
+    git clone https://github.com/astralblue/ign.git
+    cd ign
     pip install -e .
 
 Development Installation
@@ -39,8 +39,8 @@ Development Installation
 
 For development, clone the repository and install in development mode::
 
-    git clone https://github.com/astralblue/gitig.git
-    cd gitig
+    git clone https://github.com/astralblue/ign.git
+    cd ign
     uv sync
 
 This will install all dependencies including development tools.
@@ -50,7 +50,7 @@ Verification
 
 Verify your installation::
 
-    gitig --version
+    ign --version
 
 You should see the version number printed.
 
@@ -89,19 +89,19 @@ Common Issues
 **Permission errors**
     Use ``--user`` flag with pip::
 
-        pip install --user gitig
+        pip install --user ign
 
 **Network issues**
     If you're behind a corporate firewall, you may need to configure proxy settings::
 
-        pip install --proxy http://proxy.company.com:8080 gitig
+        pip install --proxy http://proxy.company.com:8080 ign
 
 Getting Help
 ~~~~~~~~~~~~
 
 If you encounter issues:
 
-1. Check the GitHub issues: https://github.com/astralblue/gitig/issues
-2. Enable debug logging: ``gitig --debug --verbose``
+1. Check the GitHub issues: https://github.com/astralblue/ign/issues
+2. Enable debug logging: ``ign --debug --verbose``
 3. Verify your Python and pip versions
 4. Try installing in a fresh virtual environment

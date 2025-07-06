@@ -1,12 +1,12 @@
 API Reference
 =============
 
-This section provides detailed API documentation for the ``gitig`` package.
+This section provides detailed API documentation for the ``ign`` package.
 
 Main Module
 -----------
 
-.. automodule:: gitig
+.. automodule:: ign
    :members:
    :undoc-members:
    :show-inheritance:
@@ -14,23 +14,23 @@ Main Module
 Core Functions
 ~~~~~~~~~~~~~~
 
-.. autofunction:: gitig.main
+.. autofunction:: ign.main
 
-.. autofunction:: gitig.async_main
+.. autofunction:: ign.async_main
 
-.. autofunction:: gitig.patch_with_diff
+.. autofunction:: ign.patch_with_diff
 
 Context Managers
 ~~~~~~~~~~~~~~~~
 
-.. autofunction:: gitig.input_file
+.. autofunction:: ign.input_file
 
-.. autofunction:: gitig.output_file
+.. autofunction:: ign.output_file
 
 Network Module
 --------------
 
-.. automodule:: gitig.net
+.. automodule:: ign.net
    :members:
    :undoc-members:
    :show-inheritance:
@@ -38,26 +38,26 @@ Network Module
 Template Operations
 ~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: gitig.net.get_template
+.. autofunction:: ign.net.get_template
 
-.. autofunction:: gitig.net.get_latest_sha
+.. autofunction:: ign.net.get_latest_sha
 
 HTTP Client Management
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. autofunction:: gitig.net.httpx_client
+.. autofunction:: ign.net.httpx_client
 
 Exceptions
 ~~~~~~~~~~
 
-.. autoexception:: gitig.net.NoCommitError
+.. autoexception:: ign.net.NoCommitError
    :members:
    :show-inheritance:
 
 Logging Module
 --------------
 
-.. automodule:: gitig._logging
+.. automodule:: ign._logging
    :members:
    :undoc-members:
    :show-inheritance:
@@ -65,37 +65,37 @@ Logging Module
 Structured Logging
 ~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: gitig._logging.StructLogAdapter
+.. autoclass:: ign._logging.StructLogAdapter
    :members:
    :show-inheritance:
 
 Formatters
 ~~~~~~~~~~
 
-.. autoclass:: gitig._logging.ExtraFormatter
+.. autoclass:: ign._logging.ExtraFormatter
    :members:
    :show-inheritance:
 
 Logging Configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. autoclass:: gitig._logging.LoggingType
+.. autoclass:: ign._logging.LoggingType
    :members:
    :show-inheritance:
 
-.. autofunction:: gitig._logging.make_logging_handler
+.. autofunction:: ign._logging.make_logging_handler
 
 Constants Module
 ----------------
 
-.. automodule:: gitig.consts
+.. automodule:: ign.consts
    :members:
    :undoc-members:
 
 Utilities Module
 ----------------
 
-.. automodule:: gitig.utils
+.. automodule:: ign.utils
    :members:
    :undoc-members:
    :show-inheritance:
@@ -103,7 +103,7 @@ Utilities Module
 Metaclasses
 ~~~~~~~~~~~
 
-.. autoclass:: gitig.utils.FinalMeta
+.. autoclass:: ign.utils.FinalMeta
    :members:
    :show-inheritance:
 
@@ -151,22 +151,22 @@ Constants and Configuration
 GitHub Integration
 ~~~~~~~~~~~~~~~~~~
 
-.. data:: gitig.consts.OWNER_REPO
+.. data:: ign.consts.OWNER_REPO
    
    The GitHub repository containing gitignore templates.
 
-.. data:: gitig.consts.RAW_BASE_URL
+.. data:: ign.consts.RAW_BASE_URL
    
    Base URL for fetching raw template files.
 
-.. data:: gitig.consts.API_ENDPOINT
+.. data:: ign.consts.API_ENDPOINT
    
    GitHub API endpoint for repository operations.
 
 Regular Expressions
 ~~~~~~~~~~~~~~~~~~~
 
-.. data:: gitig.MARKER_RE
+.. data:: ign.MARKER_RE
    
    Regular expression pattern for matching template marker comments.
 
@@ -181,7 +181,7 @@ Internal APIs
 Argument Parsing
 ~~~~~~~~~~~~~~~~
 
-.. autofunction:: gitig._build_argparser
+.. autofunction:: ign._build_argparser
 
 These functions are used internally by the command-line interface and are
 not intended for direct use by library consumers.

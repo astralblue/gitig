@@ -1,4 +1,4 @@
-Welcome to gitig's documentation!
+Welcome to ign's documentation!
 ==================================
 
 .. include:: ../README.rst

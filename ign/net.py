@@ -6,8 +6,8 @@ from typing import Sequence
 import httpx
 from github import Github
 
-from gitig import RAW_BASE_URL
-from gitig.consts import OWNER_REPO
+from ign import RAW_BASE_URL
+from ign.consts import OWNER_REPO
 
 _httpx_client_cvar = ContextVar("httpx_client")
 

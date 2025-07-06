@@ -1,18 +1,18 @@
 Usage Guide
 ===========
 
-This guide covers common usage patterns and advanced features of ``gitig``.
+This guide covers common usage patterns and advanced features of ``ign``.
 
 Quick Start
 -----------
 
 Add templates to your .gitignore::
 
-    gitig Python Node
+    ign Python Node
 
 Update existing templates::
 
-    gitig
+    ign
 
 Basic Workflow
 --------------
@@ -20,15 +20,15 @@ Basic Workflow
 1. **Initial setup**: Add templates to your project::
 
        cd my-project
-       gitig Python JetBrains
+       ign Python JetBrains
 
 2. **Regular updates**: Sync templates with upstream changes::
 
-       gitig
+       ign
 
 3. **Add new templates**: Include additional templates as needed::
 
-       gitig Rust
+       ign Rust
 
 Command Line Interface
 ----------------------
@@ -38,7 +38,7 @@ Syntax
 
 ::
 
-    gitig [OPTIONS] [TEMPLATE[@HASH]...]
+    ign [OPTIONS] [TEMPLATE[@HASH]...]
 
 Options Reference
 ~~~~~~~~~~~~~~~~~
@@ -83,7 +83,7 @@ Adding Templates
 
 Add Python and Node.js support::
 
-    gitig Python Node
+    ign Python Node
 
 The result will be a .gitignore with sections like::
 
@@ -100,7 +100,7 @@ Updating Templates
 
 Update all existing templates::
 
-    gitig
+    ign
 
 This will:
 
@@ -130,7 +130,7 @@ Version Pinning
 
 Pin templates to specific versions::
 
-    gitig Python@4f15b43d Node@main
+    ign Python@4f15b43d Node@main
 
 This ensures reproducible builds and controlled updates.
 
@@ -139,7 +139,7 @@ Preview Changes
 
 Preview what would change::
 
-    gitig --dry-run --diff Python
+    ign --dry-run --diff Python
 
 This shows the diff without applying changes.
 
@@ -151,18 +151,18 @@ Working with Pipes
 
 Read from stdin, write to stdout::
 
-    cat .gitignore | gitig Python - > new-gitignore
+    cat .gitignore | ign Python - > new-gitignore
 
 Generate .gitignore from scratch::
 
-    echo | gitig Python Node Java > .gitignore
+    echo | ign Python Node Java > .gitignore
 
 Custom Files
 ~~~~~~~~~~~~
 
 Work with custom .gitignore files::
 
-    gitig --file backend/.gitignore --output backend/.gitignore Python Django
+    ign --file backend/.gitignore --output backend/.gitignore Python Django
 
 Multiple Projects
 ~~~~~~~~~~~~~~~~~
@@ -170,7 +170,7 @@ Multiple Projects
 Batch update multiple projects::
 
     for dir in */; do
-        (cd "$dir" && gitig)
+        (cd "$dir" && ign)
     done
 
 Integration with Scripts
@@ -182,7 +182,7 @@ Use in shell scripts::
     set -e
     
     echo "Updating .gitignore templates..."
-    if gitig --diff; then
+    if ign --diff; then
         echo "Templates updated successfully"
     else
         echo "Failed to update templates" >&2
@@ -234,19 +234,19 @@ Common Issues
 **Template not found**
     Check the exact name at https://github.com/github/gitignore::
 
-        gitig NonExistentTemplate
+        ign NonExistentTemplate
         # Error: Template not found
 
 **Merge conflicts**
     When automatic merging fails, content is preserved::
 
-        gitig Python
+        ign Python
         # Warning: Cannot apply diff, local contents unchanged
 
 **Malformed markers**
     If marker comments are corrupted::
 
-        gitig
+        ign
         # Error: Unexpected marker type
 
 **Rate limits**
@@ -259,7 +259,7 @@ Debug Information
 
 Enable debug logging for detailed information::
 
-    gitig --debug --verbose Python
+    ign --debug --verbose Python
 
 This shows:
 
@@ -271,7 +271,7 @@ This shows:
 Best Practices
 --------------
 
-1. **Regular updates**: Run ``gitig`` periodically to stay current
+1. **Regular updates**: Run ``ign`` periodically to stay current
 2. **Version control**: Commit .gitignore changes to track template evolution
 3. **Custom sections**: Keep custom rules in separate sections or files
 4. **Preview first**: Use ``--dry-run --diff`` for major updates

@@ -7,14 +7,14 @@ import sys
 sys.path.insert(0, os.path.abspath(".."))
 
 # Import the package to get version and other metadata
-import gitig
+import ign
 
 # -- Project information -----------------------------------------------------
 
-project = "gitig"
+project = "ign"
 copyright = "2024, Eugene Kim"
 author = "Eugene Kim"
-version = gitig.__version__
+version = ign.__version__
 release = version
 
 # -- General configuration ---------------------------------------------------

@@ -1,7 +1,7 @@
 Development Guide
 =================
 
-This guide covers development setup, testing, and contributing to ``gitig``.
+This guide covers development setup, testing, and contributing to ``ign``.
 
 Development Setup
 -----------------
@@ -18,8 +18,8 @@ Getting Started
 
 1. **Clone the repository**::
 
-       git clone https://github.com/astralblue/gitig.git
-       cd gitig
+       git clone https://github.com/astralblue/ign.git
+       cd ign
 
 2. **Set up development environment**::
 
@@ -29,15 +29,15 @@ Getting Started
 
 3. **Verify installation**::
 
-       python -m gitig --version
+       python -m ign --version
 
 Project Structure
 -----------------
 
 ::
 
-    gitig/
-    ├── gitig/                 # Main package
+    ign/
+    ├── ign/                 # Main package
     │   ├── __init__.py       # Main module and CLI entry point
     │   ├── __main__.py       # Module execution entry point
     │   ├── _logging.py       # Structured logging utilities
@@ -81,7 +81,7 @@ Run the test suite::
 
 Run tests with coverage::
 
-    pytest --cov=gitig --cov-report=html
+    pytest --cov=ign --cov-report=html
 
 The coverage report will be generated in ``htmlcov/``.
 
@@ -112,19 +112,19 @@ Architecture
 Core Components
 ~~~~~~~~~~~~~~~
 
-**Main Module (``gitig/__init__.py``)**
+**Main Module (``ign/__init__.py``)**
     - CLI argument parsing
     - Main orchestration logic
     - Template marker processing
     - Diff application and merging
 
-**Network Module (``gitig/net.py``)**
+**Network Module (``ign/net.py``)**
     - HTTP client management
     - GitHub API integration
     - Template fetching
     - SHA resolution
 
-**Logging Module (``gitig/_logging.py``)**
+**Logging Module (``ign/_logging.py``)**
     - Structured logging adapter
     - Multiple output formats
     - Context binding
@@ -226,13 +226,13 @@ Example test structure::
     import pytest
     from unittest.mock import AsyncMock, patch
     
-    from gitig.net import get_template
+    from ign.net import get_template
     
     
     @pytest.mark.asyncio
     async def test_get_template():
         """Test template fetching."""
-        with patch("gitig.net.httpx_client") as mock_client:
+        with patch("ign.net.httpx_client") as mock_client:
             mock_response = AsyncMock()
             mock_response.text = "# Test template\n*.pyc\n"
             mock_client.return_value.__aenter__.return_value.get.return_value = mock_response
@@ -323,7 +323,7 @@ The project uses semantic versioning:
 Release Steps
 ~~~~~~~~~~~~~
 
-1. **Update version** in ``gitig/__init__.py``
+1. **Update version** in ``ign/__init__.py``
 2. **Update changelog** with new features and fixes
 3. **Run full test suite** to ensure quality
 4. **Create release commit**::
@@ -357,8 +357,8 @@ If you need help with development:
 Resources
 ---------
 
-- **GitHub Repository**: https://github.com/astralblue/gitig
-- **Issue Tracker**: https://github.com/astralblue/gitig/issues
-- **Documentation**: https://gitig.readthedocs.io/
-- **PyPI Package**: https://pypi.org/project/gitig/
+- **GitHub Repository**: https://github.com/astralblue/ign
+- **Issue Tracker**: https://github.com/astralblue/ign/issues
+- **Documentation**: https://ign.readthedocs.io/
+- **PyPI Package**: https://pypi.org/project/ign/
 - **Template Source**: https://github.com/github/gitignore
