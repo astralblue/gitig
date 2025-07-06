@@ -72,7 +72,7 @@ dev = [
 
 [tool.semantic_release]
 version_variable = "ign/__init__.py:__version__"
-build_command = "python scripts/update-changelog.py"
+build_command = ""
 dist_path = "dist/"
 upload_to_pypi = false
 upload_to_release = true
@@ -93,7 +93,6 @@ default = "semantic-release <semantic-release>"
 [tool.semantic_release.changelog]
 exclude_commit_patterns = ["^chore: release"]
 
-assets = ["docs/changelog.rst"]
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["feat", "fix", "docs", "style", "refactor", "test", "chore", "perf", "ci", "build", "revert"]

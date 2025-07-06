@@ -6,21 +6,35 @@ All notable changes to this project will be documented in this file.
 
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
-`Unreleased <https://github.com/astralblue/ign/compare/v0.1.3...HEAD>`_
+`Unreleased <https://github.com/astralblue/ign/compare/v0.1.4...HEAD>`_
 ---------------------------------------------------------------------------
 
 Added
 ^^^^^
 
 
-* Configured semantic-release to generate Keep a Changelog compatible format
-* Custom templates for semantic-release to maintain kacl-cli compatibility
+* Configured semantic-release to automatically run md-to-rst conversion
+* Created pyproject-local.toml for prefixed tag workflow compatibility
+* Resolved kacl-cli format compatibility with Keep a Changelog standard
 
 Changed
 ^^^^^^^
 
 
 * Modified release automation to work with both semantic-release and kacl-cli
+* Removed manual conversion steps from GitHub Actions workflow
+
+`0.1.4 <https://github.com/astralblue/ign/compare/v0.1.3...v0.1.4>`_ - 2025-07-06
+-------------------------------------------------------------------------------------
+
+Fixed
+^^^^^
+
+
+* Improved changelog RST automation for Read the Docs integration
+* Updated docs/changelog.rst with latest releases (0.1.2, 0.1.3)
+* Fixed GitHub Actions changelog update with better error handling
+* Used correct remote name (astralblue) in git push
 
 `0.1.3 <https://github.com/astralblue/ign/compare/v0.1.2...v0.1.3>`_ - 2025-07-06
 -------------------------------------------------------------------------------------
