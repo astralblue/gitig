@@ -57,7 +57,7 @@ jobs:
     
     - name: Build package
       if: steps.release.outputs.released == 'true'
-      run: uv run python -m build
+      run: uv run flit build
     
     - name: Publish to PyPI
       if: steps.release.outputs.released == 'true'
