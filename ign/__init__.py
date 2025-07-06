@@ -128,7 +128,7 @@ async def async_main(args: argparse.Namespace) -> int | None:
                 get_template(template, sha), get_template(template, as_of)
             )
             if as_of is not None and new_sha.lower() != as_of.lower():
-                _log.info(
+                _log.debug(
                     "latest hash in which template was modified",
                     template=template,
                     as_of=as_of,
@@ -142,7 +142,7 @@ async def async_main(args: argparse.Namespace) -> int | None:
                 if patched_a is not None:
                     local_lines[:] = patched_a
                     if patched_b is not None and patched_a != patched_b:
-                        _log.warning(
+                        _log.info(
                             "two strategies resulted in different output",
                             template=template,
                         )
@@ -157,8 +157,15 @@ async def async_main(args: argparse.Namespace) -> int | None:
                         old_sha=old_sha,
                         new_sha=new_sha,
                     )
+                if patched_a or patched_b:
+                    _log.info(
+                        "template has been updated",
+                        template=template,
+                        old_sha=old_sha,
+                        new_sha=new_sha,
+                    )
             else:
-                _log.info("no changes in remote template", template=template)
+                _log.debug("source template has not been updated", template=template)
             output_lines.append(
                 f"# --- BEGIN {RAW_BASE_URL}/{new_sha}/{template}.gitignore ---\n"
             )
@@ -170,7 +177,6 @@ async def async_main(args: argparse.Namespace) -> int | None:
             templates.pop(template)
             template = None
             sha = None
-            _log.debug("finished processing local template", template=template)
         else:
             output_lines.append(line)
             template = None
@@ -179,7 +185,6 @@ async def async_main(args: argparse.Namespace) -> int | None:
         _log.error("missing END marker for template", template=template)
         return os.EX_DATAERR
     for template, as_of in templates.items():  # those not found in input
-        _log.info("adding template", template=template)
         lines, sha = await get_template(template, as_of)
         output_lines.append(
             f"# --- BEGIN {RAW_BASE_URL}/{sha}/{template}.gitignore ---\n"
@@ -188,6 +193,7 @@ async def async_main(args: argparse.Namespace) -> int | None:
         output_lines.append(
             f"# --- END {RAW_BASE_URL}/{sha}/{template}.gitignore ---\n"
         )
+        _log.info("added template", template=template, sha=sha)
     diff = "".join(
         unified_diff(
             input_lines,
@@ -196,14 +202,17 @@ async def async_main(args: argparse.Namespace) -> int | None:
             tofile=str(args.output or args.file),
         )
     )
+    output_path = args.output or args.file
+    suppress_output = False
     if not diff:
-        _log.info("no changes")
-    else:
-        if not args.dry_run:
-            with output_file(args.output or args.file) as f:
-                f.writelines(output_lines)
-        if args.diff:
-            print(diff)
+        _log.info("no changes", path=output_path)
+        suppress_output = args.output == args.file
+    if not suppress_output and not args.dry_run:
+        with output_file(output_path) as f:
+            f.writelines(output_lines)
+        _log.info("merged changes in", path=output_path)
+    if args.diff:
+        print(diff)
     return os.EX_OK
 
 
