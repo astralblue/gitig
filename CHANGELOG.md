@@ -1,6 +1,18 @@
 # CHANGELOG
 
 
+## v0.1.4 (2025-07-06)
+
+### Bug Fixes
+
+* fix: improve changelog RST automation
+
+- Update docs/changelog.rst with latest releases (0.1.2, 0.1.3)
+- Make Read the Docs always run changelog conversion during build
+- Improve GitHub Actions changelog update with better error handling
+- Use correct remote name (astralblue) in git push ([`41a31e3`](https://github.com/astralblue/ign/commit/41a31e32a7103dcf5972b248222b854c2fdbab8d))
+
+
 ## v0.1.3 (2025-07-06)
 
 ### Bug Fixes
@@ -9,6 +21,10 @@
 
 - Use uv add --dev to properly manage dependencies
 - This enables building packages in GitHub Actions workflow ([`779acb8`](https://github.com/astralblue/ign/commit/779acb880c1f23b312f316d654c920912b4cc72a))
+
+### Chores
+
+* chore: release 0.1.3 ([`3a117dd`](https://github.com/astralblue/ign/commit/3a117ddbad5e96966a2afa19376a386f869af775))
 
 ### Refactoring
 
