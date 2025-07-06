@@ -15,27 +15,36 @@ Unreleased
 Added
 ~~~~~
 
-- None yet
+- Template caching for improved performance
+- Quiet mode (``-q``/``--quiet``) for minimal output
+- Auto-detection of TTY for default logging format
 
 Changed
 ~~~~~~~
 
-- None yet
+- Default log level changed from WARNING to INFO for better user experience
+- Verbose flag (``-v``/``--verbose``) now enables DEBUG logging specifically for ign
+- Debug flag (``--debug``) now enables DEBUG logging for all libraries
+- JSON logging is now default when stderr is not a TTY
+- Improved logging messages with better categorization
+- Consolidated code quality tools to use only Ruff (removed Black dependency)
+- Moved development dependencies to PEP 735 dependency groups
 
 Fixed
 ~~~~~
 
-- None yet
+- Double logging issue when using ``-v`` and ``-d`` flags together
+- Improved progress reporting and template update notifications
 
 Removed
 ~~~~~~~
 
-- None yet
+- Black formatter dependency (replaced entirely by Ruff)
 
-Security
-~~~~~~~~
+Performance
+~~~~~~~~~~~
 
-- None yet
+- Added LRU caching for template fetching to reduce redundant HTTP requests
 
 0.1.0 - 2025-07-06
 -----------

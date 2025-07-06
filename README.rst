@@ -64,9 +64,10 @@ Command Line Options
 -o, --output FILE       Output file (default: same as input, - for stdout)
 -d, --diff              Show unified diff of changes
 -n, --dry-run           Preview changes without writing
--v, --verbose           Verbose output
---logging TYPE          Logging format: console or json
---debug                 Enable debug logging
+-v, --verbose           Verbose output: enable debug logging
+-q, --quiet             Quiet output: only show errors and warnings
+--logging TYPE          Logging format: console or json (default: console if TTY, otherwise JSON)
+--debug                 All-debug output: enable debug logging on all libraries
 --version               Show version and exit
 
 **Arguments:**

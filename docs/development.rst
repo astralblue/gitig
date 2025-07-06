@@ -67,9 +67,9 @@ Format and lint code before committing::
     ruff format .
     ruff check --fix .
 
-Or use legacy tool if needed::
+Or run both together::
 
-    black .
+    ruff check --fix && ruff format
 
 Testing
 ~~~~~~~
