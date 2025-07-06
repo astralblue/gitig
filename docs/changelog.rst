@@ -15,7 +15,30 @@ Unreleased
 Added
 ~~~~~
 
-- Template caching for improved performance
+- None yet
+
+Changed
+~~~~~~~
+
+- None yet
+
+Fixed
+~~~~~
+
+- None yet
+
+Removed
+~~~~~~~
+
+- None yet
+
+0.1.1 - 2025-07-06
+------------------
+
+Added
+~~~~~
+
+- Template caching for improved performance using ``async-lru``
 - Quiet mode (``-q``/``--quiet``) for minimal output
 - Auto-detection of TTY for default logging format
 
