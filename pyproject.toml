@@ -74,7 +74,7 @@ dev = [
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
-build_command = "flit build"
+build_command = ""
 dist_path = "dist/"
 upload_to_pypi = false
 upload_to_release = true
