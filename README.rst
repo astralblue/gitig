@@ -25,7 +25,7 @@ Key Features
 Installation
 ============
 
-Using uv (recommended)::
+Using uv::
 
     uv add ign
 
