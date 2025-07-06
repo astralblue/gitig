@@ -232,7 +232,7 @@ def _build_argparser():
         metavar="FILE",
         type=Path,
         default=Path(".gitignore"),
-        help="""Read .gitignore input from FILE (default: .gitignore; - means stdin)""",
+        help="""Read .gitignore input from FILE (default: .gitignore; - means stdin).""",
     )
     parser.add_argument(
         "--output",
@@ -241,7 +241,7 @@ def _build_argparser():
         type=Path,
         help="""Write merged .gitignore to FILE
                 (default: same as input, except stdout if input is stdin;
-                - means stdout)""",
+                - means stdout).""",
     )
     parser.add_argument(
         "--diff",
