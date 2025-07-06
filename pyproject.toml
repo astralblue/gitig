@@ -65,6 +65,9 @@ split-on-trailing-comma = true
 dev = [
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
+    "python-kacl>=0.6.5",
     "ruff>=0.12.2",
+    "pypandoc>=1.13",
+    "m2r2>=0.3.3",
 ]
 

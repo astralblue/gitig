@@ -21,6 +21,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Run all quality checks**: `ruff format . && ruff check --fix .`
 - **Note**: Black has been removed as a dependency; Ruff handles all code quality tasks
 
+### Release Management
+- **Changelog validation**: `kacl-cli verify` (validates Keep a Changelog format)
+- **Add changelog entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
+- **Create release**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
+- **Update documentation**: `python scripts/update-changelog.py` (converts CHANGELOG.md to docs/changelog.rst)
+- **Tools**: Uses `python-kacl` for changelog automation and `m2r2` for Markdown→reStructuredText conversion
+
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)
 - **Run tests**: `pytest` 
@@ -105,6 +112,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Code quality**: Fully migrated to Ruff-only workflow (removed Black dependency)
 - **Dependencies**: Moved dev dependencies to PEP 735 dependency groups
 - **Documentation**: Updated with new CLI options and recent improvements
+- **Release automation**: Added python-kacl for changelog management and m2r2 for Markdown→RST conversion
 
 ### v0.1.0 (2025-07-06)
 - **Initial release** published to PyPI
