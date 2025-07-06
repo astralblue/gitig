@@ -71,25 +71,33 @@ dev = [
 ]
 
 [tool.semantic_release]
-version_toml = ["pyproject.toml:project.version"]
-build_command = ""
+version_variable = "ign/__init__.py:__version__"
+build_command = "python scripts/update-changelog.py"
 dist_path = "dist/"
 upload_to_pypi = false
 upload_to_release = true
 commit_message = "chore: release {version}"
 tag_format = "v{version}"
-remote_name = "astralblue"
-remote_url = "https://github.com/astralblue/ign.git"
 major_on_zero = false
 allow_zero_version = true
-changelog_file = "CHANGELOG-auto.md"
+changelog_file = ""
+
+[tool.semantic_release.remote]
+name = "astralblue"
+url = "https://github.com/astralblue/ign.git"
+
+[tool.semantic_release.commit_author]
+env = "GIT_COMMIT_AUTHOR"
+default = "semantic-release <semantic-release>"
+
+[tool.semantic_release.changelog]
+exclude_commit_patterns = ["^chore: release"]
+
+assets = ["docs/changelog.rst"]
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["feat", "fix", "docs", "style", "refactor", "test", "chore", "perf", "ci", "build", "revert"]
 minor_tags = ["feat!"]
 patch_tags = ["feat", "fix", "perf", "refactor", "style", "test", "build", "ci", "chore", "docs"]
 
-[tool.semantic_release.changelog]
-template_dir = "templates"
-exclude_commit_patterns = ["^chore: release"]
 

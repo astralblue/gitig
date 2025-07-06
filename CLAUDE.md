@@ -70,6 +70,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Install from PyPI**: `pip install ign` or `uv add ign`
 - **Install from source**: `pip install -e .`
 
+### Release Management
+- **Automated releases**: `python-semantic-release` for version management and GitHub releases
+- **Standard workflow**: `uv run semantic-release version` (uses standard tags `v{version}`)
+- **Local workflow**: `uv run semantic-release -c pyproject-local.toml version` (uses prefixed tags `astralblue/v{version}`)
+- **Manual changelog**: Use `kacl-cli` for Keep a Changelog format maintenance
+- **Automatic RST conversion**: `scripts/update-changelog.py` converts CHANGELOG.md to docs/changelog.rst
+- **Hybrid approach**: Manual changelog curation + automated versioning and publishing
+
 ## Architecture
 
 ### Core Components
@@ -133,6 +141,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Custom exceptions**: `NoCommitError` for missing template commits
 
 ## Release History
+
+### Post-v0.1.4 Improvements (2025-07-06)
+- **Release automation perfection**: Configured semantic-release with automatic RST conversion
+- **Local workflow support**: Created pyproject-local.toml for prefixed tag workflow compatibility
+- **kacl-cli integration**: Resolved format compatibility between semantic-release and Keep a Changelog
+- **Hybrid documentation**: Manual CHANGELOG.md curation + automated docs/changelog.rst generation
+- **Streamlined CI/CD**: Removed manual conversion steps, semantic-release handles everything
 
 ### Post-v0.1.0 Improvements (2025-07-06)
 - **Logging enhancements**: Default to INFO level, improved CLI options (`-q`/`--quiet` added)

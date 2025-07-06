@@ -1,6 +1,9 @@
 # Project-specific venv directories
 /.venvs/
 
+# Local semantic-release config (personal preference for prefixed tags)
+pyproject-local.toml
+
 # --- BEGIN https://raw.githubusercontent.com/github/gitignore/b7cb2f27059321be78d9cda41502bb76f6a977e5/Python.gitignore ---
 # Byte-compiled / optimized / DLL files
 __pycache__/
