@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    concurrency: release
+    permissions:
+      id-token: write
+      contents: write
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+    
+    - name: Install dependencies
+      run: uv sync --dev
+    
+    - name: Run tests
+      run: uv run pytest
+    
+    - name: Run linting
+      run: uv run ruff check .
+    
+    - name: Run formatting check
+      run: uv run ruff format --check .
+    
+    - name: Python Semantic Release
+      id: release
+      uses: python-semantic-release/python-semantic-release@v9.12.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Update changelog RST for Read the Docs
+      if: steps.release.outputs.released == 'true'
+      run: |
+        uv run python scripts/update-changelog.py
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add docs/changelog.rst
+        git commit -m "docs: update changelog RST from markdown [skip ci]" || echo "No changelog changes"
+        git push origin main || echo "No changes to push"
+    
+    - name: Publish to PyPI
+      if: steps.release.outputs.released == 'true'
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        verbose: true

@@ -22,11 +22,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Note**: Black has been removed as a dependency; Ruff handles all code quality tasks
 
 ### Release Management
-- **Changelog validation**: `kacl-cli verify` (validates Keep a Changelog format)
-- **Add changelog entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
-- **Create release**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
+- **Automated releases**: `semantic-release version` (automatically determines and creates releases)
+- **Manual changelog validation**: `kacl-cli verify` (validates Keep a Changelog format)
+- **Manual changelog entries**: `kacl-cli add [added|changed|fixed|removed] "description"`
+- **Manual version creation**: `kacl-cli release X.X.X` (moves Unreleased to versioned section)
 - **Update documentation**: `python scripts/update-changelog.py` (converts CHANGELOG.md to docs/changelog.rst)
-- **Tools**: Uses `python-kacl` for changelog automation and `m2r2` for Markdown→reStructuredText conversion
+- **Tools**: 
+  - `python-semantic-release` for automated version management and releases
+  - `python-kacl` for manual changelog management 
+  - `m2r2` for Markdown→reStructuredText conversion
+- **Automation**: GitHub Actions handle automated releases on push to main
 
 ### Testing
 - **Test framework**: `pytest` (configured in dev dependencies)
@@ -112,7 +117,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Code quality**: Fully migrated to Ruff-only workflow (removed Black dependency)
 - **Dependencies**: Moved dev dependencies to PEP 735 dependency groups
 - **Documentation**: Updated with new CLI options and recent improvements
-- **Release automation**: Added python-kacl for changelog management and m2r2 for Markdown→RST conversion
+- **Release automation**: Added python-kacl for changelog management, m2r2 for Markdown→RST conversion, and python-semantic-release for automated versioning
+- **CI/CD**: Added GitHub Actions workflows for automated testing and releases
+- **Documentation**: Added Read the Docs integration with automatic builds
 
 ### v0.1.0 (2025-07-06)
 - **Initial release** published to PyPI

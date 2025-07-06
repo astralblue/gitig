@@ -69,5 +69,27 @@ dev = [
     "ruff>=0.12.2",
     "pypandoc>=1.13",
     "m2r2>=0.3.3",
+    "python-semantic-release>=9.0.0",
+    "build>=1.0.0",
 ]
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+build_command = "python -m build"
+dist_path = "dist/"
+upload_to_pypi = true
+upload_to_release = true
+commit_message = "chore: release {version}"
+tag_format = "v{version}"
+remote_name = "astralblue"
+remote_url = "https://github.com/astralblue/ign.git"
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = ["feat", "fix", "docs", "style", "refactor", "test", "chore", "perf", "ci", "build", "revert"]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf", "refactor", "style", "test", "build", "ci", "chore", "docs"]
+
+[tool.semantic_release.changelog]
+default_templates.changelog_file = "CHANGELOG.md"
+exclude_commit_patterns = []
 
