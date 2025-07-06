@@ -258,11 +258,22 @@ def _build_argparser():
         help="""Dry-run (don't write output); can be used with --diff/-d.""",
     )
     parser.add_argument(
+        "--quiet",
+        "-q",
+        dest="log_level",
+        action="store_const",
+        const=logging.WARNING,
+        default=False,
+        help="""Quiet output: only show errors and warnings.""",
+    )
+    parser.add_argument(
         "--verbose",
         "-v",
-        action="store_true",
+        dest="log_level",
+        action="store_const",
+        const=logging.DEBUG,
         default=False,
-        help="""Verbose output.""",
+        help="""Verbose output: enable debug logging on ign.""",
     )
     parser.add_argument(
         "--logging",
@@ -274,7 +285,8 @@ def _build_argparser():
         "--debug",
         action="store_true",
         default=False,
-        help="""Debug output: set DEBUG level on the root logger.""",
+        help="""All-debug output: enable debug logging on the root logger.
+                Use to see logs from all libraries.""",
     )
     parser.add_argument(
         "--version",
@@ -292,6 +304,7 @@ def _build_argparser():
         help="""GitHub template names (without .gitignore extension),
                 optionally with commit hash.""",
     )
+    parser.set_defaults(log_level=logging.INFO)
     return parser
 
 
@@ -299,11 +312,9 @@ def main() -> int | None:
     load_dotenv()
     parser = _build_argparser()
     args = parser.parse_args()
-    _log.setLevel(logging.WARNING)
+    _log.setLevel(args.log_level)
     handler = make_logging_handler(args.logging)
     _log.addHandler(handler)
-    if args.verbose:
-        _log.setLevel(logging.INFO)
     if args.debug:
         root_logger = logging.getLogger()
         root_logger.addHandler(handler)
