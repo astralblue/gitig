@@ -24,7 +24,6 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "async-lru>=2.0.5",
-    "black>=25.1.0",
     "httpx>=0.28.1",
     "patch-ng>=1.18.1",
     "pygithub>=2.6.1",
