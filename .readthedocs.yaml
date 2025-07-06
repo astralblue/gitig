@@ -9,8 +9,8 @@ build:
     python: "3.12"
   jobs:
     post_checkout:
-      # Generate changelog RST from markdown
-      - python scripts/update-changelog.py || echo "Changelog conversion failed, continuing..."
+      # Generate changelog RST from markdown (always run during docs build)
+      - python scripts/update-changelog.py
 
 python:
   install:

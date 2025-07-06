@@ -48,12 +48,20 @@ jobs:
     - name: Update changelog RST for Read the Docs
       if: steps.release.outputs.released == 'true'
       run: |
+        echo "Converting CHANGELOG.md to docs/changelog.rst..."
         uv run python scripts/update-changelog.py
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add docs/changelog.rst
-        git commit -m "docs: update changelog RST from markdown [skip ci]" || echo "No changelog changes"
-        git push origin main || echo "No changes to push"
+        
+        echo "Checking for changes..."
+        if git diff --quiet docs/changelog.rst; then
+          echo "No changes to changelog.rst"
+        else
+          echo "Committing changelog.rst updates..."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/changelog.rst
+          git commit -m "docs: update changelog RST from markdown [skip ci]"
+          git push astralblue main
+        fi
     
     - name: Build package
       if: steps.release.outputs.released == 'true'

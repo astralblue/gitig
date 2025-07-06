@@ -1,183 +1,363 @@
 
-Changelog
+CHANGELOG
 =========
 
-All notable changes to this project will be documented in this file.
+v0.1.3 (2025-07-06)
+-------------------
 
-The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_\ , and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
-
-Unreleased
-----------
-
-Added
-^^^^^
+Bug Fixes
+^^^^^^^^^
 
 
-* None yet
+* 
+  fix: add flit to dev dependencies for CI builds
 
-Changed
+* 
+  Use uv add --dev to properly manage dependencies
+
+* This enables building packages in GitHub Actions workflow (\ `\ ``779acb8`` <https://github.com/astralblue/ign/commit/779acb880c1f23b312f316d654c920912b4cc72a>`_\ )
+
+Refactoring
+^^^^^^^^^^^
+
+
+* 
+  refactor: retire build dependency group
+
+* 
+  Remove build optional dependency group from pyproject.toml
+
+* Consolidate all build tools into dev dependencies
+* flit is now managed solely through dev dependencies (\ `\ ``b2d2fd3`` <https://github.com/astralblue/ign/commit/b2d2fd34765beea815e816000a62437634f47d09>`_\ )
+
+v0.1.2 (2025-07-06)
+-------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* 
+  fix: disable build command in semantic-release
+
+* 
+  Set build_command to empty string to skip building in semantic-release
+
+* Building will be handled separately in GitHub Actions workflow
+* 
+  This avoids dependency issues in the semantic-release container (\ `\ ``977cb6d`` <https://github.com/astralblue/ign/commit/977cb6d0350546f5045fdee885a0adf3f19ae077>`_\ )
+
+* 
+  fix: use flit build instead of python -m build
+
+* 
+  Replace python -m build with flit build in semantic-release config
+
+* Update GitHub Actions workflow to use flit build
+* 
+  Remove build dependency as we use flit directly (\ `\ ``e3137c1`` <https://github.com/astralblue/ign/commit/e3137c16cf0edd2bef66c8abc61bd6bb8a453ef3>`_\ )
+
+* 
+  fix: format scripts/update-changelog.py with ruff (\ `\ ``d39b328`` <https://github.com/astralblue/ign/commit/d39b32842b6c2ff546388daddfe9ddc410d40f4b>`_\ )
+
+* 
+  fix: handle missing tests in CI workflows
+
+* 
+  Allow pytest to exit gracefully when no tests are found
+
+* This prevents CI failure during development phase
+* Add fallback message for empty test suites (\ `\ ``0433f7b`` <https://github.com/astralblue/ign/commit/0433f7b16aeee8fa7f69bf973f11dd87e6765c88>`_\ )
+
+Chores
+^^^^^^
+
+
+* chore: release 0.1.2 (\ `\ ``b2b0846`` <https://github.com/astralblue/ign/commit/b2b0846e989f3b97d54c1f5277aa52030fd014c9>`_\ )
+
+Features
+^^^^^^^^
+
+
+* 
+  feat: implement hybrid changelog approach
+
+* 
+  Configure semantic-release for version bumping only (not changelog)
+
+* Keep manual CHANGELOG.md management with kacl-cli
+* Separate PyPI publishing from semantic-release
+* Update documentation with hybrid workflow explanation
+* Auto-generated release notes from commits, manual changelog for docs
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``bedea4b`` <https://github.com/astralblue/ign/commit/bedea4bd551bbff2d1aa2f17fdc594b01c9c752e>`_\ )
+
+
+* 
+  feat: configure pre-1.0 semantic versioning scheme
+
+* 
+  Set major_on_zero=false and allow_zero_version=true
+
+* Configure breaking changes (feat!) to bump minor version
+* Configure features and fixes to bump patch version
+* Update documentation with 0.x versioning scheme
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``e09631f`` <https://github.com/astralblue/ign/commit/e09631f1059eb1e546d3cfcd0e975904ce5f4c07>`_\ )
+
+
+* 
+  feat: add comprehensive release automation with CI/CD
+
+* 
+  Add python-semantic-release for automated version management
+
+* Configure GitHub Actions workflows for testing and releases
+* Add Read the Docs configuration for automated documentation
+* Update CLAUDE.md with new release management tools
+* Enable automatic PyPI publishing and GitHub releases
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``32ce01b`` <https://github.com/astralblue/ign/commit/32ce01b9d7037420e51c4fd5d90a2ec80ef6c2a3>`_\ )
+
+
+* 
+  feat: add release automation tooling with python-kacl and m2r2
+
+* 
+  Add python-kacl for changelog automation and validation
+
+* Add m2r2 for Markdown to reStructuredText conversion
+* Create scripts/update-changelog.py for automated docs sync
+* Fix CHANGELOG.md format to comply with Keep a Changelog
+* Update docs/changelog.rst with current content
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``d120b5e`` <https://github.com/astralblue/ign/commit/d120b5ec5c76205036e88d0c2c50972ef2e1ae26>`_\ )
+
+v0.1.1 (2025-07-06)
+-------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* fix: double logging when using -v and -d together (\ `\ ``b0ed563`` <https://github.com/astralblue/ign/commit/b0ed56364075cfcd8a3aa8b45b236b55b6689cdb>`_\ )
+
+Chores
+^^^^^^
+
+
+* 
+  chore: update CLAUDE.md with recent improvements
+
+* 
+  Document post-v0.1.0 enhancements in release history
+
+* Update CLI logging improvements and new options
+* Note removal of Black dependency in favor of Ruff-only workflow
+* Document performance improvements with template caching
+* Record bug fixes and dependency management changes
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``bebb5a5`` <https://github.com/astralblue/ign/commit/bebb5a595f6dac479a2eee4d881a9552b5f1d2b8>`_\ )
+
+
+* 
+  chore: remove uv as a runtime dependency (\ `\ ``90e82d1`` <https://github.com/astralblue/ign/commit/90e82d17cdfc405f7a6da5ce6453917bf56000d5>`_\ )
+
+* 
+  chore: simplify by using just Ruff (\ `\ ``67013b6`` <https://github.com/astralblue/ign/commit/67013b6da49919fc8981791ba01b9c9ae0fec9cf>`_\ )
+
+* 
+  chore: move dev dependencies to PEP 735 dependency group
+
+This is in line with what uv uses with the --dev flag. (\ `\ ``2b60ba1`` <https://github.com/astralblue/ign/commit/2b60ba1a8e0189c2dbfd17d6e15358f1c76913fa>`_\ )
+
+
+* chore: exclude build output dirs in PyCharm (\ `\ ``45155b0`` <https://github.com/astralblue/ign/commit/45155b06227591645b2eef382fffb05074077700>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* 
+  docs: update documentation with recent improvements
+
+* 
+  Update CLI option descriptions for new logging behavior
+
+* Document quiet mode and improved verbose/debug options
+* Add changelog entries for post-v0.1.0 improvements
+* Update development guide to reflect Ruff-only workflow
+* Document template caching and performance improvements
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``4c42c12`` <https://github.com/astralblue/ign/commit/4c42c129b9b7158cd07569e47003f94b78fe3ee5>`_\ )
+
+
+* 
+  docs: add missing punctuation (\ `\ ``79ad885`` <https://github.com/astralblue/ign/commit/79ad885f58937db79884855043a4ded871ed985a>`_\ )
+
+* 
+  docs: don't recommend uv for installation
+
+uv may be great for development but is an overkill for installing CLIs. (\ `\ ``4161a21`` <https://github.com/astralblue/ign/commit/4161a210244fab3033f30baf30041f334b24a266>`_\ )
+
+
+* 
+  docs: update CLAUDE.md with v0.1.0 release status
+
+* 
+  Add release status and PyPI link
+
+* Document publishing workflow
+* Add release history section
+* Update repository references
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``f941869`` <https://github.com/astralblue/ign/commit/f9418693853522d1dc5321b4a0201c51b97b9efb>`_\ )
+
+Features
+^^^^^^^^
+
+
+* 
+  feat: use JSON logging if stderr is not a tty (\ `\ ``0d0220a`` <https://github.com/astralblue/ign/commit/0d0220a3cc806dd25a69f657f502ab0150ecf828>`_\ )
+
+* 
+  feat: streamline logging CLI options
+
+* 
+  Default to INFO level to display useful progress messages.
+
+* Make -v enable DEBUG messages.
+* 
+  Add -q/--quiet for the old behavior (WARNING level). (\ `\ ``acae32a`` <https://github.com/astralblue/ign/commit/acae32a31fcd9ce46ba3b1e38e56814ce4154a2f>`_\ )
+
+* 
+  feat: streamline logging
+
+* 
+  Log useful progress messages at INFO level.
+
+* Demote verbose log messages to DEBUG level.
+* 
+  Do log when updating/adding templates. (\ `\ ``099fff7`` <https://github.com/astralblue/ign/commit/099fff717fc23129f54f8a9c58b00d40698e9aa6>`_\ )
+
+* 
+  feat: cache fetched templates (\ `\ ``89d53bd`` <https://github.com/astralblue/ign/commit/89d53bd894d50bb6a367f41ecfc14b75d6cf42d3>`_\ )
+
+Unknown
 ^^^^^^^
 
 
-* None yet
+* 
+  Release version 0.1.1
 
-Fixed
-^^^^^
+* 
+  Template caching for improved performance
 
+* Quiet mode and improved logging options
+* Auto-detection of TTY for logging format
+* Bug fixes for double logging issue
+* Simplified to Ruff-only code quality workflow
+* Documentation updates
 
-* None yet
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
 
-Removed
-^^^^^^^
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``35b972d`` <https://github.com/astralblue/ign/commit/35b972dbc7d98c4363e658f1b6698161fa89f721>`_\ )
 
+v0.1.0 (2025-07-05)
+-------------------
 
-* None yet
-
-`0.1.1 <https://github.com/astralblue/ign/compare/v0.1.0...v0.1.1>`_ - 2025-07-06
--------------------------------------------------------------------------------------
-
-Added
-^^^^^
-
-
-* Template caching for improved performance using ``async-lru``
-* Quiet mode (\ ``-q``\ /\ ``--quiet``\ ) for minimal output
-* Auto-detection of TTY for default logging format
-
-Changed
-^^^^^^^
+Chores
+^^^^^^
 
 
-* Default log level changed from WARNING to INFO for better user experience
-* Verbose flag (\ ``-v``\ /\ ``--verbose``\ ) now enables DEBUG logging specifically for ign
-* Debug flag (\ ``--debug``\ ) now enables DEBUG logging for all libraries
-* JSON logging is now default when stderr is not a TTY
-* Improved logging messages with better categorization
-* Consolidated code quality tools to use only Ruff (removed Black dependency)
-* Moved development dependencies to PEP 735 dependency groups
-* Added LRU caching for template fetching to reduce redundant HTTP requests
+* 
+  chore: consolidate to Ruff for all code quality tasks
 
-Fixed
-^^^^^
+* 
+  Remove isort dependency in favor of Ruff's import sorting
 
+* Configure Ruff for formatting, linting, and import sorting
+* Update documentation to reflect Ruff-first workflow
+* Set changelog release date to 2025-07-06
+* Apply Ruff formatting to existing code
 
-* Double logging issue when using ``-v`` and ``-d`` flags together
-* Improved progress reporting and template update notifications
+This simplifies the development workflow to just two commands:
+ruff format . && ruff check --fix .
 
-Removed
-^^^^^^^
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
 
-
-* Black formatter dependency (replaced entirely by Ruff)
-
-`0.1.0 <https://github.com/astralblue/ign/releases/tag/v0.1.0>`_ - 2025-07-06
----------------------------------------------------------------------------------
-
-Added
-^^^^^
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``bded59a`` <https://github.com/astralblue/ign/commit/bded59ae0c731367aa014975926c21f71d4b9eb4>`_\ )
 
 
-* Initial release of ``ign``
-* Core functionality for .gitignore template management
-* Template synchronization from GitHub's gitignore repository
-* Support for local modifications preservation
-* Dual merge strategy implementation
-* Command-line interface with comprehensive options
-* Auto-detection of existing templates
-* Dry-run and diff preview capabilities
-* Environment variable configuration
-* Comprehensive error handling
-* Structured logging system
-* GitHub API integration for template fetching
-* Intelligent merge strategies for local modifications
-* Support for template version pinning
-* Structured logging with multiple output formats
-* Comprehensive documentation with Sphinx
-* Development tools and workflows
-* Converted README from Markdown to reStructuredText format
+* 
+  chore: consolidate dev dependencies into optional-dependencies
 
-**Features:**
+* 
+  Merge [dependency-groups] into [project.optional-dependencies]
 
-**Template Management**
+* Add version constraints for black, isort, and ruff
+* Remove duplicate PEP 735 section for broader compatibility
+* Support both uv (--extra dev) and pip (.[dev]) workflows
+
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
+
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``0402bf6`` <https://github.com/astralblue/ign/commit/0402bf67dbf4dca1acbb573670facc42c07bb762>`_\ )
 
 
-* Fetch templates from GitHub's official gitignore repository
-* Automatic version detection and updates
-* Preserve local modifications during updates
-* Support for multiple templates in single file
+* 
+  chore: use uv (\ `\ ``08ea680`` <https://github.com/astralblue/ign/commit/08ea680e83546a8774b1ef34fbc2430f24ff9bdc>`_\ )
 
-**Merge Strategies**
+* 
+  chore: sync .gitignore (\ `\ ``3396ca2`` <https://github.com/astralblue/ign/commit/3396ca2018a8cd4b5544edc0a34dbfedd23ce38b>`_\ )
 
+* 
+  chore: add project skeleton (\ `\ ``751e14b`` <https://github.com/astralblue/ign/commit/751e14bcda3b9b42ec64de5b35a4a2497fb84f61>`_\ )
 
-* Strategy A: Apply upstream changes to local modifications
-* Strategy B: Apply local changes to new upstream version
-* Automatic conflict resolution with graceful fallbacks
+* 
+  chore: initial empty root-commit (\ `\ ``5397eee`` <https://github.com/astralblue/ign/commit/5397eee58554b957d4c5633f1a8dc0a8de785c24>`_\ )
 
-**Command Line Interface**
-
-
-* Flexible input/output options (files, stdin/stdout)
-* Template version pinning with commit hashes
-* Preview mode with unified diff output
-* Verbose and debug logging options
-
-**Developer Experience**
+Documentation
+^^^^^^^^^^^^^
 
 
-* Structured logging with context binding
-* Rich console output with colors and formatting
-* JSON logging for automated processing
-* Comprehensive error messages and debugging
+* docs: initial version (\ `\ ``550a071`` <https://github.com/astralblue/ign/commit/550a071891b9f745c5e7401eabce93d6fb2096a8>`_\ )
 
-**Integration**
+Features
+^^^^^^^^
 
 
-* GitHub API integration with token support
-* Environment variable configuration
-* Shell-friendly exit codes
-* Pipe-friendly input/output handling
+* 
+  feat: rename project from gitig to ign
 
-**Technical Details:**
+* 
+  Rename package directory from gitig/ to ign/
 
-**Dependencies**
+* Update all documentation and references
+* Update project metadata in pyproject.toml
+* Fix import statements throughout codebase
+* Update IntelliJ IDEA configuration files
+* Regenerate uv.lock with new package name
 
+The name 'gitig' was already taken on PyPI, so renaming to 'ign'
+(short for .gitignore) for publication.
 
-* Python 3.10+ required
-* async-lru for caching
-* httpx for HTTP client
-* PyGithub for GitHub API
-* patch-ng for diff application
-* rich for console formatting
-* python-json-logger for structured logging
+🤖 Generated with `Claude Code <https://claude.ai/code>`_
 
-**Architecture**
-
-
-* Async/await throughout for better performance
-* Context variable-based HTTP client management
-* Regular expression-based marker parsing
-* Diff/patch-based merge algorithms
-* Structured logging with bound context
-
-**Testing**
+Co-Authored-By: Claude noreply@anthropic.com (\ `\ ``26d0a95`` <https://github.com/astralblue/ign/commit/26d0a95f1f19624ae5b8f794298be02e7b38b64c>`_\ )
 
 
-* pytest for test framework
-* Full test coverage of core functionality
-* Mock-based testing for external dependencies
-* Integration tests for end-to-end workflows
-
-**Documentation**
-
-
-* Sphinx-based documentation
-* Comprehensive API reference
-* Usage examples and tutorials
-* Development guide for contributors
-
-**Contributors:**
-
-
-* Eugene Kim (@astralblue) - Initial development and architecture
-
-Special thanks to the GitHub team for maintaining the official gitignore template repository that makes this tool possible.
+* feat: initial version (\ `\ ``416de61`` <https://github.com/astralblue/ign/commit/416de61964670b24573665e0281f1a72aa9dcf41>`_\ )
