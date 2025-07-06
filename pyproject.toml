@@ -36,6 +36,7 @@ dependencies = [
 docs = [
     "sphinx",
     "sphinx-rtd-theme",
+    "m2r2",
 ]
 
 [project.urls]
