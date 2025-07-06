@@ -34,12 +34,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "black>=25.1.0",
-    "pytest",
-    "pytest-cov",
-    "ruff>=0.12.2",
-]
 docs = [
     "sphinx",
     "sphinx-rtd-theme",
@@ -67,4 +61,12 @@ select = ["I"]  # Enable import sorting
 force-single-line = false
 combine-as-imports = true
 split-on-trailing-comma = true
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.2",
+]
 
