@@ -5,12 +5,12 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "gitig"
 authors = [
-    {name = "Eugene Kim", email = "ab@astral.blue"},
+    { name = "Eugene Kim", email = "ab@astral.blue" },
 ]
 description = "A tool for composing and synchronizing .gitignore from GitHub's template collection."
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -23,7 +23,14 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
+    "async-lru>=2.0.5",
     "black>=25.1.0",
+    "httpx>=0.28.1",
+    "patch-ng>=1.18.1",
+    "pygithub>=2.6.1",
+    "python-dotenv>=1.1.1",
+    "python-json-logger>=3.3.0",
+    "rich>=14.0.0",
 ]
 
 [project.optional-dependencies]
@@ -43,6 +50,9 @@ Homepage = "https://github.com/astralblue/gitig"
 Repository = "https://github.com/astralblue/gitig"
 Issues = "https://github.com/astralblue/gitig/issues"
 
+[project.scripts]
+gitig = "gitig:main"
+
 [tool.isort]
 profile = "black"
 skip_gitignore = true
@@ -51,4 +61,5 @@ skip_gitignore = true
 dev = [
     "black>=25.1.0",
     "isort>=6.0.1",
+    "ruff>=0.12.2",
 ]
