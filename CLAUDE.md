@@ -6,6 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `ign` is a Python CLI tool for composing and synchronizing .gitignore files from GitHub's template collection. It reads existing .gitignore files with specially formatted marker comments and can update/add template sections from github/gitignore repository.
 
+**Status**: ✅ **RELEASED v0.1.0** - Published on PyPI at https://pypi.org/project/ign/
+**Repository**: https://github.com/astralblue/ign
+
 ## Commands
 
 ### Development Environment
@@ -25,7 +28,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Build and Distribution
 - **Build backend**: `flit_core` (configured in pyproject.toml)
-- **Build package**: `python -m build` or `flit build`
+- **Build package**: `flit build`
+- **Publish to PyPI**: `flit publish`
+- **Install from PyPI**: `pip install ign` or `uv add ign`
 - **Install from source**: `pip install -e .`
 
 ## Architecture
@@ -89,3 +94,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Structure errors**: Returns `os.EX_DATAERR` for malformed template markers
 - **Network errors**: Graceful handling of GitHub API failures
 - **Custom exceptions**: `NoCommitError` for missing template commits
+
+## Release History
+
+### v0.1.0 (2025-07-06)
+- **Initial release** published to PyPI
+- **Project renamed** from `gitig` to `ign` (gitig was taken on PyPI)
+- **Repository moved** to https://github.com/astralblue/ign
+- **Code quality** consolidated to Ruff (formatting + linting + import sorting)
+- **Full documentation** with Sphinx, comprehensive README.rst
+- **Core features**: Template synchronization, dual merge strategies, GitHub API integration
