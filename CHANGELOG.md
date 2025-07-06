@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v0.1.3 (2025-07-06)
+
+### Bug Fixes
+
+* fix: add flit to dev dependencies for CI builds
+
+- Use uv add --dev to properly manage dependencies
+- This enables building packages in GitHub Actions workflow ([`779acb8`](https://github.com/astralblue/ign/commit/779acb880c1f23b312f316d654c920912b4cc72a))
+
+### Refactoring
+
+* refactor: retire build dependency group
+
+- Remove build optional dependency group from pyproject.toml
+- Consolidate all build tools into dev dependencies
+- flit is now managed solely through dev dependencies ([`b2d2fd3`](https://github.com/astralblue/ign/commit/b2d2fd34765beea815e816000a62437634f47d09))
+
+
 ## v0.1.2 (2025-07-06)
 
 ### Bug Fixes
@@ -24,6 +42,10 @@
 - Allow pytest to exit gracefully when no tests are found
 - This prevents CI failure during development phase
 - Add fallback message for empty test suites ([`0433f7b`](https://github.com/astralblue/ign/commit/0433f7b16aeee8fa7f69bf973f11dd87e6765c88))
+
+### Chores
+
+* chore: release 0.1.2 ([`b2b0846`](https://github.com/astralblue/ign/commit/b2b0846e989f3b97d54c1f5277aa52030fd014c9))
 
 ### Features
 
